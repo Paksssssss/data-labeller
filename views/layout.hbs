@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/materialize.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css' />
+  </head>
+  <body>
+    {{{body}}}
+  </body>
+  <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io('http://localhost:4000');
+  </script>
+  <script src="/module_scripts/handlebars/dist/handlebars.min.js"></script>
+  <script src="/module_scripts/jquery/dist/jquery.min.js"></script>
+  <script src="/javascripts/materialize.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+</html>

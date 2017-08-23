@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="set-container">
+    <ul class="collapsible" data-collapsible='expandable'>
+      <li>
+        <div class="collapsible-header"><h5 class='status-title white-text'>
+          <i class="fa fa-exclamation fa-5x" aria-hidden="true" style = 'margin:0px'></i>Unlabelled</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="unlabelled">
+            {{#each unlabelled}}
+            <div class="col s12 m12 l6" id = "{{news_id}}">
+              <div class="card horizontal small">
+                <div class="card-image">
+                  <img src="{{news_image}}">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content" data-article = "{{news_content}}">
+                    <span class="card-title article-title darken-4">{{news_title}}</span>
+                    <p>{{news_date}}</p>
+                    <br>
+                    <a href="{{news_url}}">Go to Article!</a>
+                  </div>
+                  <div class="card-action">
+                    <a class="unlabelled-trigger modal-trigger" href="#labelModal" id="{{news_id}}">Label Article</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><h5 class='status-title red-text'>
+          <i class="fa fa-cog fa-spin fa-3x fa-fw" style = 'margin:0px'></i>Processing</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="processing">
+            {{#each processing}}
+            <div class="col s12 m12 l6">
+              <div class="card horizontal small" id = "{{news_id}}">
+                <div class="card-image">
+                  <img src="{{news_image}}">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <span class="card-title article-title darken-4">{{news_title}}</span>
+                    <p>{{news_date}}</p>
+                    <a href="{{news_url}}">Go to Article!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header"><h5 class='status-title light-green-text accent-3'>
+          <i class="fa fa-check fa-3x fa-fw" style = 'margin:0px'></i>Labelled</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="labelled">
+            {{#each labelled}}
+            <div class="col s12 m12 l6">
+              <div class="card horizontal small" id = "{{news_id}}">
+                <div class="card-image">
+                  <img src="{{news_image}}">
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <span class="card-title article-title darken-4">{{news_title}}</span>
+                    <p>{{news_date}}</p>
+                    <a href="{{news_url}}">Go to Article!</a>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">Label Article</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="modal" id = "labelModal">
+  <div class="modal-content">
+
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="input-field s12 m10 l10">
+        <select class="platform-label">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Platform Label</label>
+      </div>
+      <a href="#!" class="cancel-label modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+</div>
