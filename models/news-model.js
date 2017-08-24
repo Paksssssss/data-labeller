@@ -1,8 +1,9 @@
 var mysql = require('../config/mysql');
 
 var query1 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE status=? ORDER BY news_id ASC LIMIT 4';
-var query2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE status=? ORDER BY news_id DESC LIMIT 4';
+var query2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, segment_label, platform_label FROM news WHERE status=? ORDER BY news_id DESC LIMIT 4';
 var updateQuery = 'UPDATE news SET status=? WHERE news_id=?'
+var setLabelQuery = 'UPDATE news SET status=?, segment_label=?, platform_label=? WHERE news_id=?'
 var newsModel = {
   getUnlabelled: function() {
     return new Promise(function(resolveQuery, rejectQuery){
@@ -49,9 +50,9 @@ var newsModel = {
       });
     });
   },
-  setLabel: function(news_id){
+  setLabel: function(label_info){
     return new Promise(function(resolveUpdate, rejectUpdate){
-      mysql.query(updateQuery, [2,news_id],function(error,results,fields){
+      mysql.query(setLabelQuery, [2,label_info['segment'], label_info['platform'], label_info['id']],function(error,results,fields){
         if(error){
           console.log(error.toString());
           rejectUpdate(error.toString());

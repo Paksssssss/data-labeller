@@ -11,9 +11,11 @@ var socketModel = function (socket) {
 
     });
   };
-  var setLabelArticle = function(news_id){
-    newsModel.setLabel(news_id).then(function(res){
-      socket.sockets.emit('db updated', true);
+  var setLabelArticle = function(label_info){
+    console.log("setment: "+label_info['segment'])
+    newsModel.setLabel(label_info).then(function(res){
+      socket.emit('db updated', true);
+      socket.broadcast.emit('db updated', true);
     }).catch(function(err) {
 
       console.log(err.toString());
