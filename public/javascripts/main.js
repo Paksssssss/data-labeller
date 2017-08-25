@@ -19,16 +19,6 @@
     title = clickedCard.find('.card-title').text();
     date = clickedCard.find('.card-content p').text();
     url = clickedCard.find('.card-content a').attr('href');
-    plabel = clickedCard.find('.card-content p.pl').attr('data');
-    slabel = clickedCard.find('.card-content p.sl').attr('data');
-    if(typeof plabel =="undefined" || typeof slabel =="undefined"){
-      plabel = '';
-      slabel ='';
-    }
-    console.log(slabel);
-    console.log(plabel);
-    $('select.segment-label').val(slabel);
-    $('select.platform-label').val(plabel);
     modalContent.append("<h4>"+title+"</h4><br>");
     modalContent.append("<img class = 'responsive-img' src = '"+image+"'></img><br>")
     modalContent.append(date+"<br>");
@@ -67,14 +57,13 @@
   $('.unlabelled-trigger').on('click', triggerUnlabelled);
 
   var dbUpdated = function(){
-    console.log('db updated')
     $.ajax({
       type: "GET",
       url: "http://192.168.0.15:3000/ajax-call",
       success: function(response) {
         var unlabelledTemp = Handlebars.compile("<div class='col s12 m12 l6' id = '{{news_id}}'><div class='card horizontal small'><div class='card-image'><img src='{{news_image}}'></div><div class='card-stacked'><div class='card-content' data-article = '{{news_content}}'><span class='card-title article-title darken-4'>{{news_title}}</span><p>{{news_date}}</p><br><a href='{{news_url}}'>Go to Article!</a></div><div class='card-action'><a class='unlabelled-trigger modal-trigger' href='#labelModal' id='{{news_id}}'>Label Article</a></div></div></div><div>");
         var processingTemp = Handlebars.compile("<div class='col s12 m12 l6'><div class='card horizontal small' id = '{{news_id}}'><div class='card-image'><img src='{{news_image}}'></div><div class='card-stacked'><div class='card-content'><span class='card-title article-title darken-4'>{{news_title}}</span><p>{{news_date}}</p><a href='{{news_url}}'>Go to Article!</a></div></div></div></div>");
-        var labelledTemp = Handlebars.compile("<div class='col s12 m12 l6' id = '{{news_id}}'><div class='card horizontal small'><div class='card-image'><img src='{{news_image}}'></div><div class='card-stacked'><div class='card-content' data-article = '{{news_content}}'><span class='card-title article-title darken-4'>{{news_title}}</span><p>{{news_date}}</p><br><a href='{{news_url}}' target='newtab'>Go to Article!</a><br><p class='pl' data = '{{platform_label}}'>Platform Label: {{platform_label}}</p><p class='sl' data = '{{segment_label}}'>Segment Label: {{segment_label}}</p><br></div><div class='card-action'><a class='labelled-trigger modal-trigger' href='#labelModal' id='{{news_id}}'>Edit Article Label</a></div></div></div></div>");
+        var labelledTemp = Handlebars.compile("<div class='col s12 m12 l6' id = '{{news_id}}'><div class='card horizontal small'><div class='card-image'><img src='{{news_image}}'></div><div class='card-stacked'><div class='card-content' data-article = '{{news_content}}'><span class='card-title article-title darken-4'>{{news_title}}</span><p>{{news_date}}</p><br><a href='{{news_url}}' target='newtab'>Go to Article!</a><br><p class='pl' data = '{{platform_label}}'>Platform Label: {{platform_label}}</p><p class='sl' data = '{{segment_label}}'>Segment Label: {{segment_label}}</p><br></div><div class='card-action'><a class='unlabelled-trigger modal-trigger' href='#labelModal' id='{{news_id}}'>Edit Article Label</a></div></div></div></div>");
         unlabelledRow.empty()
         processingRow.empty()
         labelledRow.empty()
