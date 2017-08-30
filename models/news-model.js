@@ -6,9 +6,9 @@ var updateQuery = 'UPDATE news SET status=? WHERE news_id=?'
 var setLabelQuery = 'UPDATE news SET status=?, segment_label=?, platform_label=? WHERE news_id=?'
 var newsModel = {
   getUnlabelled: function() {
-    return new Promise(function(resolveQuery, rejectQuery){
-      mysql.query(query1,[0], function(error, results, fields){
-        if(error){
+    return new Promise(function(resolveQuery, rejectQuery) {
+      mysql.query(query1, [0], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectQuery(error.toString());
         }
@@ -17,9 +17,9 @@ var newsModel = {
     });
   },
   getProcessing: function() {
-    return new Promise(function(resolveQuery, rejectQuery){
-      mysql.query(query2, [1], function(error, results,fields){
-        if(error){
+    return new Promise(function(resolveQuery, rejectQuery) {
+      mysql.query(query2, [1], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectQuery(error.toString());
         }
@@ -28,9 +28,9 @@ var newsModel = {
     });
   },
   getLabelled: function() {
-    return new Promise(function(resolveQuery, rejectQuery){
-      mysql.query(query2, [2], function(error, results,fields){
-        if(error){
+    return new Promise(function(resolveQuery, rejectQuery) {
+      mysql.query(query2, [2], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectQuery(error.toString());
         }
@@ -38,10 +38,10 @@ var newsModel = {
       });
     });
   },
-  startLabel: function(news_id){
-    return new Promise(function(resolveUpdate, rejectUpdate){
-      mysql.query(updateQuery, [1,news_id], function(error, results, fields){
-        if(error){
+  startLabel: function(news_id) {
+    return new Promise(function(resolveUpdate, rejectUpdate) {
+      mysql.query(updateQuery, [1, news_id], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectUpdate(error.toString());
         }
@@ -50,10 +50,10 @@ var newsModel = {
       });
     });
   },
-  setLabel: function(label_info){
-    return new Promise(function(resolveUpdate, rejectUpdate){
-      mysql.query(setLabelQuery, [2,label_info['segment'], label_info['platform'], label_info['id']],function(error,results,fields){
-        if(error){
+  setLabel: function(label_info) {
+    return new Promise(function(resolveUpdate, rejectUpdate) {
+      mysql.query(setLabelQuery, [2, label_info['segment'], label_info['platform'], label_info['id']], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectUpdate(error.toString());
         }
@@ -61,11 +61,11 @@ var newsModel = {
       });
     });
   },
-  cancelLabel: function(news_id){
+  cancelLabel: function(news_id) {
     console.log(news_id)
-    return new Promise(function(resolveUpdate, rejectUpdate){
-      mysql.query(updateQuery, [0,news_id],function(error,results,fields){
-        if(error){
+    return new Promise(function(resolveUpdate, rejectUpdate) {
+      mysql.query(updateQuery, [0, news_id], function(error, results, fields) {
+        if (error) {
           console.log(error.toString());
           rejectUpdate(error.toString());
         }

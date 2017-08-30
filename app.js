@@ -15,7 +15,7 @@ var io = require('socket.io')(server)
 
 server.listen(4000);
 
-io.on('connection',socketModel);
+io.on('connection', socketModel);
 
 
 
@@ -27,13 +27,16 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/module_scripts',express.static(path.join(__dirname, '/node_modules')));
+app.use('/module_scripts', express.static(path.join(__dirname, '/node_modules')));
 
 app.use('/', index);
 app.use('/users', users);
+app.user('/ajax-reqs', ajaxr);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
