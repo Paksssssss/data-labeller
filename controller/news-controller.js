@@ -1,9 +1,9 @@
 var newsModel = require('../models/news-model')
 
 var newsCtrl = {
-  getAllNews: function() {
+  getAllSegment: function() {
     return new Promise(function(resolveQuery, rejectQuery) {
-      Promise.all([newsModel.getUnlabelled(), newsModel.getProcessing(), newsModel.getLabelled()]).then(function(queryResult) {
+      Promise.all([newsModel.getUnlabelledSegment(), newsModel.getProcessingSegment(), newsModel.getLabelledSegment()]).then(function(queryResult) {
         resolveQuery({
           unlabelled: queryResult[0],
           processing: queryResult[1],
@@ -13,7 +13,12 @@ var newsCtrl = {
         rejectQuery(queryError.toString());
       });
     });
-  }
+  },
+  // getAllPlatform: function() {
+  //   return new Promise(function(resolveQuery, rejectQuery){
+  //     Promise.all([news.Model.getUnlabelledPlatform()])
+  //   });
+  // }
 };
 
 module.exports = newsCtrl;
