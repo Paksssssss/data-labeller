@@ -1,7 +1,8 @@
 var mysql = require('../config/mysql');
 
 var segmentQuery1 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE s_status=? ORDER BY news_id ASC LIMIT 4';
-var segmentQuery2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, segment_label FROM news WHERE s_status=? ORDER BY s_labelled_date DESC LIMIT 4';
+var segmentQuery2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, segment_label FROM news WHERE s_status=? ORDER BY news_id DESC LIMIT 4';
+var segmentQuery3 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, segment_label FROM news WHERE s_status=? ORDER BY s_labelled_date DESC LIMIT 4';
 var segmentUpdateQuery = 'UPDATE news SET s_status=? WHERE news_id=?';
 var segmentSetLabelQuery = 'UPDATE news SET s_status=?, segment_label = ?, s_labelled_date = TIMESTAMP(?) WHERE news_id=?';
 var platformQuery1 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE p_status=? ORDER BY news_id ASC LIMIT 4';
@@ -35,7 +36,7 @@ var newsModel = {
   },
   getLabelledSegment: function() {
     return new Promise(function(resolveQuery, rejectQuery) {
-      mysql.query(segmentQuery2, [2], function(error, results, fields) {
+      mysql.query(segmentQuery3, [2], function(error, results, fields) {
         if (error) {
           console.log(error.toString());
           rejectQuery(error.toString());

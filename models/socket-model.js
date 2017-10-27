@@ -2,7 +2,7 @@ var newsModel = require('./news-model')
 
 var socketModel = function (socket) {
   var startLabelArticle = function(news_id){
-    newsModel.setLabelSegment(news_id).then(function(res){
+    newsModel.startLabelSegment(news_id).then(function(res){
       socket.emit('db updated', true);
       socket.broadcast.emit('db updated', true);
     }).catch(function(err) {
