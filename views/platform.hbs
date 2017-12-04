@@ -1,0 +1,157 @@
+<div class="row">
+  <h2 class="center white-text">Platforms Labeller</h2>
+  <div class="set-container">
+    <ul class="collapsible" data-collapsible='expandable'>
+      <li>
+        <div class="collapsible-header">
+          <h5 class='status-title white-text'>
+          <i class="fa fa-exclamation fa-5x" aria-hidden="true" style = 'margin:0px'></i>Unlabelled</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="unlabelled">
+            {{#each unlabelled}}
+              <div class="col s12 m12 l6" id="{{news_id}}">
+                <div class="card horizontal small">
+                  <div class="card-image">
+                    <img src="{{news_image}}">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content" data-article="{{news_content}}">
+                      <span class="card-title article-title darken-4">{{news_title}}</span>
+                      <p>{{news_date}}</p>
+                      <br>
+                      <a href="{{news_url}}" target="newtab">Go to Article!</a>
+                    </div>
+                    <div class="card-action">
+                      <a class="unlabelled-trigger modal-trigger" href="#labelModal" id="{{news_id}}">Label Article</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <h5 class='status-title red-text'>
+          <i class="fa fa-cog fa-spin fa-3x fa-fw" style = 'margin:0px'></i>Processing</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="processing">
+            {{#each processing}}
+              <div class="col s12 m12 l6">
+                <div class="card horizontal small" id="{{news_id}}">
+                  <div class="card-image">
+                    <img src="{{news_image}}">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <span class="card-title article-title darken-4">{{news_title}}</span>
+                      <p>{{news_date}}</p>
+                      <a href="{{news_url}}" target="newtab">Go to Article!</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">
+          <h5 class='status-title light-green-text accent-3'>
+          <i class="fa fa-check fa-3x fa-fw" style = 'margin:0px'></i>Labelled</h5>
+        </div>
+        <div class="collapsible-body">
+          <div class="row" id="labelled">
+            {{#each labelled}}
+              <div class="col s12 m12 l6" id="{{news_id}}">
+                <div class="card horizontal small">
+                  <div class="card-image">
+                    <img src="{{news_image}}">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content" data-article="{{news_content}}">
+                      <span class="card-title article-title darken-4">{{news_title}}</span>
+                      <p>{{news_date}}</p>
+                      <br>
+                      <a href="{{news_url}}" target="newtab">Go to Article!</a>
+                      <br>
+                      <p class="pl" data="{{platform_label}}">Platform Label: {{platform_label}}</p>
+                      <!-- <p class="sl" data="{{segment_label}}">Segment Label: {{segment_label}}</p> -->
+                      <br>
+                    </div>
+                    <div class="card-action">
+                      <a class="unlabelled-trigger modal-trigger" href="#labelModal" id="{{news_id}}">Edit Article Label</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="center">
+    <a class="waves-effect waves-light btn light-green accent-3 black-text modal-trigger" href="#instructionsModal">INSTRUCTIONS!</a>
+  </div>
+</div>
+
+<div class="modal bottom-sheet" id="instructionsModal">
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 l4 m4">
+        <h5>Platform Labels</h5>
+        <p>PC and Console - News or Games related to PC and Console </p>
+        <p>iOS and Anroid - News or games related to iOS and Android </p>
+        <p>Nintendo - News or games related to Nintendo</p>
+        <p>Others - They dont belong. :(</p>
+      </div>
+      <div class="col s12 l4 m4">
+        <h5>Label Keywords</h5>
+        <p>USE THESE KEYWORDS TO HELP YOU LABEL THE ARTICLE. </p>
+        <p>Upcoming/New/blabla - release, announce, announcement, reveal, new, launch, come, upcoming, dlc, available, launch_date, remake, release_date, soon, expected, create, discover, trailer, pre_release, alpha, beta, demo</p>
+        <p>Updates/Patches - major update, balance, tweak, change, patch, rebalance, latest patch, feature, features, available, upcoming, crash, tweak, bug, fix, error, content, expected, problem, overhaul</p>
+        <p>Platform/hardware - amd, graphics, radeon, nvidia, socket, system, speaker, case, casing, mouse, keyboard, speaker, headphones, motherboard, settings, sound, wireless, etc related to hardware and gaming platforms</p>
+        <p>Others - press, conference, special, event, events, meet, dead, any event unrealated above.</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+  </div>
+</div>
+
+<div class="modal" id="labelModal">
+  <div class="modal-content">
+
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="input-field col s12 offset-m3 m6 offset-l3 l6">
+        <select class="label-choice" multiple>
+          <option value="" disabled>Choose your option</option>
+          <option value="1">PC</option>
+          <option value="2">PS 4</option>
+          <option value="3">Xbox One</option>
+          <option value="4">Nintendo Switch</option>
+          <option value="5">Android</option>
+          <option value="6">iOS</option>
+          <option value="7">Nintendo 3DS</option>
+          <option value="8">PS Vita</option>
+          <option value="9">PS 3</option>
+          <option value="10">Xbox 360</option>
+          <option value="11">Wii U</option>
+        </select>
+        <label>Segment Label</label>
+      </div>
+    </div>
+
+    <a href="#!" class="cancel-label modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    <a href="#!" class="set-label modal-action waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
+<!-- <script src="http://192.168.0.15:3000/javascripts/platform.js" defer></script> -->
