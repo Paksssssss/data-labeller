@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/ajax-call', function(req, res, next){
+router.get('/ajax-call-segment', function(req, res, next){
   newsCtrl.getAllSegment().then(function(queryResult){
     console.log(queryResult['unlabelled'].length)
     res.send(queryResult);
@@ -23,10 +23,24 @@ router.get('/ajax-call', function(req, res, next){
   });
 });
 
+router.get('/ajax-call-platform', function(req, res, next){
+  newsCtrl.getAllPlatform().then(function(queryResult){
+    console.log(queryResult['unlabelled'].length)
+    res.send(queryResult);
+  }).catch(function(queryError){
+    console.log(queryError.toString());
+  });
+});
+
+
 router.get('/platform',function(req,res,next){
-  // console.log(router.stack)
-  sample = {'item':'blah'};
-  res.render('platform',sample);
+  newsCtrl.getAllPlatform().then(function(queryResult){
+    // console.log(baseUrl);
+    console.log("im at platform " + queryResult['unlabelled'].length)
+    res.render('platform',queryResult);
+  }).catch(function(queryError){
+    console.log(queryError.toString());
+  });
 });
 
 module.exports = router;
