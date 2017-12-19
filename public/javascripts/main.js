@@ -1,9 +1,6 @@
 (function(window,$,socket){
-  $('.collapsible').collapsible();
-  $('.modal').modal({
-    dismissible: false
-  });
-  $('select').material_select();
+
+
   //get 3 div components
   var unlabelledRow = $('div.row#unlabelled');
   var processingRow = $('div.row#processing');
