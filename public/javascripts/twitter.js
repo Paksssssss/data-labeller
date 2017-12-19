@@ -5,7 +5,7 @@
   var labelledList = $('div#labelled-tab ul');
   // console.log(Handlebars.templates)
   var labellerContent = $('#tweetModal div.modal-content');
-  var options = '<option value="O">O</option><option value="B-per">B-PER</option><option value="I-per">I-PER</option><option value="B-game">B-GAME</option><option value="I-game">I-GAME</option><option value="B-com">B-COM</option><option value="I-com">I-COM</option><option value="B-plat">B-PLAT</option><option value="I-plat">I-PLAT</option>'
+  var options = '<option value="O">O</option><option value="B-per">B-PER</option><option value="I-per">I-PER</option><option value="B-game">B-GAME</option><option value="I-game">I-GAME</option><option value="B-com">B-COM</option><option value="I-com">I-COM</option><option value="B-plat">B-PLAT</option><option value="I-plat">I-PLAT</option><option value="B-event">B-EVENT</option><option value="I-event">I-EVENT</option>'
   var select = '<select class="ne-selector"><option value="" disabled selected>Choose your option</option>'+options+'</select>'
 
   var startLabelTrigger = function(event){
