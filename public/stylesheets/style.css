@@ -21,9 +21,29 @@ a {
 .status-title{
   padding-top: 10px;
 }
-.collapsible, .collapsible-body, .collapsible-header{
-  background-color: #424242;
-  border-color: #616161;
+.collapsible, .collapsible-body, .collapsible-header,
+.collection,.collection-item, .collection-header{
+  background-color: #424242 !important;
+  border-color: #616161 !important;
+}
+
+.tabs{
+  background-color: #757575;
+  border-color: #757575;
+  color
+}
+
+.tabs .indicator{
+  background-color: #4caf50;
+}
+
+.tabs .tab a:hover,
+.tabs .tab a.active{
+  color: #76ff03;
+}
+
+.tabs .tab a {
+  color: #4caf50;
 }
 
 nav{

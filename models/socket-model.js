@@ -1,4 +1,5 @@
-var newsModel = require('./news-model')
+var newsModel = require('./news-model');
+var tweetModel = require('./tweet-model');
 
 var socketModel = function (socket) {
   var startLabelArticle = function(news_details){
@@ -34,9 +35,32 @@ var socketModel = function (socket) {
     });
   };
 
+  var updateTweetStatus = function(tweet_info){
+    tweetModel.updateStatus(tweet_info).then(function(res){
+      console.log("Labelling Tweet " + tweet_info['id'])
+      socket.emit('update list');
+      socket.broadcast.emit('update list');
+    }).catch(function(err){
+      console.log(err.toString());
+    });
+
+  };
+
+  var setTweetLabel = function(tweet_info){
+    tweetModel.setLabel(tweet_info).then(function(res){
+      console.log("Tweet Labelled");
+      socket.emit('update list');
+      socket.broadcast.emit('update list')
+    }).catch(function(err){
+      console.log(err.toString());
+    });
+  }
+  socket.on('label tweet', setTweetLabel);
+  socket.on('tweet clicked', updateTweetStatus);
+  socket.on('tweet cancelled', updateTweetStatus)
   socket.on('unlabelled clicked', startLabelArticle);
   socket.on('cancel label', cancelLabelArticle);
   socket.on('label set', setLabelArticle);
 };
 
-module.exports = socketModel
+module.exports = socketModel;

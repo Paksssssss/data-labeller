@@ -1,0 +1,57 @@
+<div class="row">
+  <h2 class="center white-text">Tweet Labeller</h2>
+  <div class="col s12">
+    <ul class="tabs tabs-fixed-width container">
+      <li class="tab"><a href="#unlabelled-tab">Unlabelled Tweets</a></li>
+      <li class="tab"><a href="#labelled-tab">Labelled Tweets</a></li>
+    </ul>
+  </div>
+  <div class="container" id="unlabelled-tab">
+    <ul class="collection with-header white-text">
+      {{#each unlabelled}}
+      <li class="collection-item" id="{{tweet_id}}" data-pos="{{tweet_pos}}">
+        <div>
+          <span>{{tweet_text}}</span>
+          <a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="container" id="labelled-tab">
+    <ul class="collection with-header white-text">
+      {{#each labelled}}
+      <li class="collection-item" id="{{tweet_id}}" data-pos="{{tweet_pos}}">
+        <div>
+          <span>{{tweet_text}}</span>
+          <a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+
+<div class="modal" id="tweetModal">
+  <div class="modal-content">
+    <div class="row center">
+      <div class="col s4 m4 l4">
+        <h5>Token</h5>
+      </div>
+      <div class="col s4 m4 l4">
+        <h5>POS Tag</h5>
+      </div>
+      <div class="col s4 m4 l4">
+        <h5>NE Tag</h5>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="cancel-tweet-label modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    <a href="#!" class="set-tweet-label modal-action waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
+
+<script src="http://192.168.0.15:3000/javascripts/twitter.js" defer></script>
