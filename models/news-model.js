@@ -5,9 +5,9 @@ var segmentQuery2 = 'SELECT news_id, news_title,news_date, news_content, news_im
 var segmentQuery3 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, segment_label FROM news WHERE s_status=? ORDER BY s_labelled_date DESC LIMIT 4';
 var segmentUpdateQuery = 'UPDATE news SET s_status=? WHERE news_id=?';
 var segmentSetLabelQuery = 'UPDATE news SET s_status=?, segment_label = ?, s_labelled_date = TIMESTAMP(?) WHERE news_id=?';
-var platformQuery1 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE p_status=? ORDER BY news_id ASC LIMIT 4';
-var platformQuery2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, platform_label FROM news WHERE p_status=? ORDER BY news_id DESC LIMIT 4';
-var platformQuery3 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, platform_label FROM news WHERE p_status=? ORDER BY p_labelled_date DESC LIMIT 4';
+var platformQuery1 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url FROM news WHERE p_status=? AND segment_label=1 ORDER BY news_id ASC LIMIT 4';
+var platformQuery2 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, platform_label FROM news WHERE p_status=? AND segment_label=1 ORDER BY news_id DESC LIMIT 4';
+var platformQuery3 = 'SELECT news_id, news_title,news_date, news_content, news_image, news_url, platform_label FROM news WHERE p_status=? AND segment_label=1 ORDER BY p_labelled_date DESC LIMIT 4';
 var platformUpdateQuery = 'UPDATE news SET p_status=? WHERE news_id=?';
 var platformSetLabelQuery = 'UPDATE news SET p_status=?, platform_label=?, p_labelled_date = TIMESTAMP(?) WHERE news_id=?';
 
