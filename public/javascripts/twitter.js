@@ -69,6 +69,11 @@
     labellerContent.empty()
   });
   $('a.startlabel-trigger').on('click',startLabelTrigger);
+  $('a.remove-tweet').on('click',function(event){
+    id = this.id;
+    socket.emit('remove tweet', id);
+  });
+
 
   var updateList = function(){
     console.log("updating lists")

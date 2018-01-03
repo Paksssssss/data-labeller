@@ -10,10 +10,10 @@
     <ul class="collection with-header white-text">
       {{#each unlabelled}}
       <li class="collection-item" id="{{tweet_id}}" data-pos="{{tweet_pos}}">
-        <div>
-          <span>{{tweet_text}}</span>
-          <a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a>
-        </div>
+        <span>{{tweet_text}}</span>
+        <br>
+        <a href="" class = "remove-tweet red-text" id = "{{tweet_id}}">Remove Tweet</a>
+        <a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a>
       </li>
       {{/each}}
     </ul>

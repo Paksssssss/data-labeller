@@ -54,7 +54,17 @@ var socketModel = function (socket) {
     }).catch(function(err){
       console.log(err.toString());
     });
-  }
+  };
+
+  var removeTweet = function(tweet_id){
+    tweetModel.removeTweet(tweet_id).then(function(res){
+      console.log("Tweet Removed");
+      socket.emit('update list');
+      socket.broadcast.emit('update list')
+    })
+  };
+
+  socket.on('remove tweet', removeTweet);
   socket.on('label tweet', setTweetLabel);
   socket.on('tweet clicked', updateTweetStatus);
   socket.on('tweet cancelled', updateTweetStatus)
