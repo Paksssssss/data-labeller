@@ -81,7 +81,7 @@
       type: "GET",
       url: "http://192.168.0.15:3000/ajax-call-tweets",
       success: function(response){
-        var tweets = Handlebars.compile('<li class="collection-item" id="{{tweet_id}}" data-pos="{{tweet_pos}}"><div><span>{{tweet_text}}</span><a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a></div></li>')
+        var tweets = Handlebars.compile('<li class="collection-item" id="{{tweet_id}}" data-pos="{{tweet_pos}}"><span>{{tweet_text}}</span><br><a href="" class = "remove-tweet red-text" id = "{{tweet_id}}">Remove Tweet</a><a href="#tweetModal" class="secondary-content modal-trigger startlabel-trigger" id="{{tweet_id}}"><i class="material-icons">send</i></a></li>')
         unlabelledList.empty()
         labelledList.empty()
         console.log("in ajax function now")
