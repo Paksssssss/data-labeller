@@ -61,4 +61,18 @@ router.get('/ajax-call-tweets',function(req, res, next){
   });
 });
 
+router.get('/counts', function(req, res, next){
+    console.log("getCounts")
+    Promise.all([tweetCtrl.getTweetCount(),newsCtrl.getSegmentCount()]).then(function(queryResult){
+        counts = {
+            'tweet' : queryResult[0],
+            'segment' : queryResult[1]
+        }
+        console.log("Show Counts  " + counts.toString())
+        res.send(counts)
+    }).catch(function(queryError){
+        console.log(queryError.toString())
+    });
+});
+
 module.exports = router;
